@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
 
-        builder.setMessage("This is massage");
+       // builder.setMessage("This is massage");
         builder.setTitle("Alert");
         builder.setIcon(R.mipmap.ic_launcher);
 
@@ -43,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        builder.setMultiChoiceItems(charSequence, new boolean[charSequence.length], new DialogInterface.OnMultiChoiceClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+
+                Toast.makeText(MainActivity.this,charSequence[which]+(isChecked?"Checked":"Unchecked"),Toast.LENGTH_LONG).show();
+            }
+        });
 
         AlertDialog dialog=builder.create();
         dialog.show();
@@ -53,13 +60,6 @@ public class MainActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this);
 
-        builder.setMultiChoiceItems(charSequence, new boolean[charSequence.length], new DialogInterface.OnMultiChoiceClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which, boolean isChecked) {
-
-                Toast.makeText(MainActivity.this,charSequence[which]+(isChecked?"Checked":"Unchecked"),Toast.LENGTH_LONG).show();
-            }
-        });
 
 
         AlertDialog dialog=builder.create();
